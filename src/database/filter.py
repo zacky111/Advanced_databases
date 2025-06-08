@@ -32,17 +32,33 @@ def get_filtered_measures(
     filters = []
 
     if country:
-        filters.append(Country.name == country)
+        if isinstance(country, list):
+            filters.append(Country.name.in_(country))
+        else:
+            filters.append(Country.name == country)
+
     if date_from:
         filters.append(MeasureDate.date >= date_from)
     if date_to:
         filters.append(MeasureDate.date <= date_to)
+
     if policy_type:
-        filters.append(PolicyMeasureLevel.name == policy_type)
+        if isinstance(policy_type, list):
+            filters.append(PolicyMeasureLevel.name.in_(policy_type))
+        else:
+            filters.append(PolicyMeasureLevel.name == policy_type)
+
     if target_group:
-        filters.append(PolicyMeasureLevel.name == target_group)
+        if isinstance(target_group, list):
+            filters.append(PolicyMeasureLevel.name.in_(target_group))
+        else:
+            filters.append(PolicyMeasureLevel.name == target_group)
+
     if level:
-        filters.append(PolicyMeasureLevel.level_type == level)
+        if isinstance(level, list):
+            filters.append(PolicyMeasureLevel.level_type.in_(level))
+        else:
+            filters.append(PolicyMeasureLevel.level_type == level)
 
     if filters:
         query = query.filter(and_(*filters))

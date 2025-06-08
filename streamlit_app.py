@@ -34,30 +34,30 @@ country_options = get_country_options(session)
 policy_type_options = get_policy_type_options(session)
 level_options = get_level_options(session)
 
-country = st.sidebar.selectbox("Country", ["Any"] + country_options)
+selected_countries = st.sidebar.multiselect("Countries", country_options)
+selected_policy_types = st.sidebar.multiselect("Policy Type", policy_type_options)
+selected_target_groups = st.sidebar.multiselect("Target Group", policy_type_options)
+selected_levels = st.sidebar.multiselect("Level", level_options)
 date_from = st.sidebar.date_input("Start Date", value=date(2020, 1, 1))
 date_to = st.sidebar.date_input("End Date", value=date(2020, 2, 29))
-policy_type = st.sidebar.selectbox("Policy Type", ["Any"] + policy_type_options)
-target_group = st.sidebar.selectbox("Target Group", ["Any"] + policy_type_options)
-level = st.sidebar.selectbox("Level", ["Any"] + level_options)
 
-# Convert "Any" to None for filtering
-country = None if country == "Any" else country
-policy_type = None if policy_type == "Any" else policy_type
-target_group = None if target_group == "Any" else target_group
-level = None if level == "Any" else level
+# Convert selections
+countries = selected_countries if selected_countries else None
+policy_types = selected_policy_types if selected_policy_types else None
+target_groups = selected_target_groups if selected_target_groups else None
+levels = selected_levels if selected_levels else None
 
 if st.sidebar.button("Apply Filters"):
     with st.spinner("Loading results..."):
         results = []
         measures = get_filtered_measures(
             session,
-            country=country,
+            country=countries,
             date_from=date_from,
             date_to=date_to,
-            policy_type=policy_type,
-            target_group=target_group,
-            level=level
+            policy_type=policy_types,
+            target_group=target_groups,
+            level=levels
         )
         for m in measures:
             results.append({
