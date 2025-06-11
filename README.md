@@ -1,5 +1,11 @@
-# Title of a project
-Creators, Date, Course
+# “COVID-19 Policy Responses in the Financial Sector – Statistical Data Analysis” 
+
+**People participating in the project:**
+ - Jakub Ciura, 
+ - Janusz Chmiel,
+ - Kacper Błachowiak
+
+  **Advanced Databases** - group 1. - Friday 11:30
 
 ----
 ## Table of contents
@@ -24,7 +30,8 @@ Creators, Date, Course
     - [Step 5:](#step-5)
 ---
 ## Concept of a project
-What is a reasoning, what are the features of a created system
+
+The project aims to develop a system that collects, stores, and visualizes data related to financial sector policy responses to COVID-19. The process includes importing data from an online dataset into a custom-built relational database and implementing a visualization layer to allow users to interactively analyze the information. 
 
 ## Dataset
 Description of a dataset here (source, description of coluimns + what do they even mean)
@@ -52,7 +59,7 @@ screen + description + fact of ability to choose multiple options from criteria
 #### "Authority Breakdown and Map"
 
 
-## How to use
+## How to use:
 
 ### Step 1: 
     Install Postgresql:
