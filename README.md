@@ -1,8 +1,8 @@
 # “COVID-19 Policy Responses in the Financial Sector – Statistical Data Analysis” 
 
 **People participating in the project:**
- - Jakub Ciura, 
- - Janusz Chmiel,
+ - Jakub Ciura 
+ - Janusz Chmiel
  - Kacper Błachowiak
 
   **Advanced Databases** - group 1. - Friday 11:30
@@ -34,6 +34,34 @@
 The project aims to develop a system that collects, stores, and visualizes data related to financial sector policy responses to COVID-19. The process includes importing data from an online dataset into a custom-built relational database and implementing a visualization layer to allow users to interactively analyze the information. 
 
 ## Dataset
+
+**COVID-19 Finance Sector Related Policy Responses** - Bojan Tunguz 
+Click [here](https://www.kaggle.com/datasets/tunguz/covid19-finance-sector-related-policy-responses/data) to view the dataset on Kaggle.
+
+The data set tracks measures that governments have taken to support their financial sector following the spread of the COVID-19 respiratory virus. Policies are classified according five main categories: banking sector, financial markets and institutions, insolvency, liquidity/funding, and payments systems (Level 1 policy). Each category has different sub-categories (Level 2 policy measures) and a further more granular classification (Level 3 policy measures).
+
+Level 1 and 2 policy measures:
+    Banking sector Crisis management
+    Integrity
+    Operational continuity
+    Prudential
+    Support borrowers
+    Financial Markets/NBFI Market functioning
+    NBFI
+    Public debt management
+    Insolvency Amending bankruptcy filing obligations
+    Enhancing tools for out-of-court debt restr. and workouts
+    Other Insolvency
+    Liquidity/funding Asset purchases
+    Liquidity (incl FX)/ELA
+    Policy rate
+    Other Liquidity
+    Payments systems Consumer protection
+    Easing regulatory requirements
+    Promoting and ensuring avail. of dig. paym. mechan.
+    Other Payments
+
+
 Description of a dataset here (source, description of coluimns + what do they even mean)
 
 ## Data structure
