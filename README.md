@@ -65,8 +65,6 @@ The data set tracks measures that governments have taken to support their financ
    - Other Payments
 
 
-Description of a dataset here (source, description of coluimns + what do they even mean)
-
 ## Data structure
 (here should be added a graph, ie. from https://dbdiagram.io/)
 
@@ -77,23 +75,37 @@ What technologies were used, what is flow of data
 ## Features of a system
 ///
 ### Filtering
+
+<img src="IMG/FilterOptions.png" width="128"/>
+
+<img src="IMG/MeasureFilter.png" width="128"/>
+
+
 screen + description + fact of ability to choose multiple options from criteria
 
 ### Diagrams:
 
 #### "Measures Over Time"
 
+<img src="IMG/MeasuresOverTime.png" width="128"/>
+
 #### "Measures by Country"
+
+<img src="IMG/MeasuresByCountry.png" width="128"/>
 
 #### "Distribution of Policy Measures by Level"
 
+<img src="IMG/DistributionByLevel.png" width="128"/>
+
 #### "Authority Breakdown and Map"
+
+<img src="IMG/AuthorityBreakdownAndMap.png" width="128"/>
 
 
 ## How to use:
 
 ### Step 1: 
-    Install Postgresql:
+    **Install Postgresql:**
      - sudo apt update
      - sudo apt install postgresql postgresql-contrib
      - sudo -u postgres psql
@@ -101,21 +113,21 @@ screen + description + fact of ability to choose multiple options from criteria
      - \q to exit pqsl
 
 ### Step 2:
-    Setup python modules, in the project directory run commands:
+    **Setup python modules, in the project directory run commands:**
      - python3 -m venv .venv
      - source .venv/bin/activate
      - pip install -r requirements.txt
 
 ### Step 3:
-    Setup credentials
+    **Setup credentials**
     Create .env file and fill in the fields (check .env.example).
     If you have a default instance of postgres you can copy the contents of .env.example
 
 ### Step 4:
-    Setup database
+    **Setup database**
     run: python setup_database.py
     It will create the necessary tables and insert data.
 
 ### Step 5:
-    Start the app
+    **Start the app**
     run: streamlit run streamlit_app.py
