@@ -102,6 +102,9 @@ graph LR
     Backend --> Frontend["przygotowanie danych do wizualizacji"]
     Frontend --> User["interfejs użytkownika"]
     User --> Frontend["wybór filtrów i zapytań"]
+```
+<br />
+<br />
 
 ## Features of a system
 
