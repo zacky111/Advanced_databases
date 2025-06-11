@@ -123,7 +123,7 @@ if results:
             country_counts = df["country"].value_counts().reset_index()
             country_counts.columns = ["country", "measure_count"]
 
-            top_n_countries = st.slider("Number of top countries to display", 1, len(country_counts), min(10, len(country_counts)))
+            top_n_countries = st.slider("Number of top countries to display", 0, len(country_counts), min(10, len(country_counts)))
             country_counts = country_counts.head(top_n_countries)
 
             fig2 = px.bar(
