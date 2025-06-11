@@ -39,9 +39,9 @@ The project aims to develop a system that collects, stores, and visualizes data 
 
 Click [here](https://www.kaggle.com/datasets/tunguz/covid19-finance-sector-related-policy-responses/data) to view the dataset on Kaggle.
 
+This dataset provides a structured record of global policy responses in the financial sector during the COVID-19 pandemic, maintained by the IMF. It includes dimensions such as country, date, policy type, and description, making it suitable for time-based, statistical, and geographical analysis.
 
-The data set tracks measures that governments have taken to support their financial sector following the spread of the COVID-19 respiratory virus. Policies are classified according five main categories: banking sector, financial markets and institutions, insolvency, liquidity/funding, and payments systems (Level 1 policy). Each category has different sub-categories (Level 2 policy measures) and a further more granular classification (Level 3 policy measures).
-
+Policies are classified according five main categories: banking sector, financial markets and institutions, insolvency, liquidity/funding, and payments systems (Level 1 policy). Each category has different sub-categories (Level 2 policy measures) and a further more granular classification (Level 3 policy measures).
 
 **Level 1 and 2 policy measures:**
    - Banking sector Crisis management
@@ -73,38 +73,82 @@ What technologies were used, what is flow of data
 
 
 ## Features of a system
-///
+
+Users are able to filter data using at criteria, such as: 
+ - Countries
+ - Policy Type
+ - Target Group
+ - Level
+ - Time Range 
+
+
+<p align="center">
+    <img src="IMG/FilterOptions.png" width="250"/>
+    <br>
+    <em>Filter Options</em>
+</p>
+
+
+The following images illustrate sample outputs of the system based on the following selected criteria:
+
+ - **Countries:** Poland, Italy
+ - **Policy Type:** Banking Sector
+ - **Target Group:** Banking Sector
+ - **Level:** Level 1, Level 2
+ - **Time Range:** 2020/01/01 - 2025/02/13
+
+
 ### Filtering
-<p align="center">
-<img src="IMG/FilterOptions.png" width="300"/>
-</p>
+
+The system allows users to filter the data based on multiple criteria. Users can select multiple options simultaneously from each category, enabling precise customization and comparison across different data segments.
 
 <p align="center">
-<img src="IMG/MeasureFilter.png" width="500"/>
+    <img src="IMG/MeasureFilter.png" width="800"/>
+    <br>
+    <em>Measure filter</em>
 </p>
 
-screen + description + fact of ability to choose multiple options from criteria
 
 ### Diagrams:
 
 #### "Measures Over Time"
+
+This diagram visualizes the implementation of policy measures over a timeline, allowing users to track how responses evolved throughout the pandemic.
+
 <p align="center">
-<img src="IMG/MeasuresOverTime.png" width="500"/>
+    <img src="IMG/MeasuresOverTime.png" width="500"/>
+    <br>
+    <em>**Measures over time**</em>
 </p>
 
 #### "Measures by Country"
+
+This view helps identify how different countries approached the crisis, comparing the number of actions taken during chosen time period.
+
 <p align="center">
-<img src="IMG/MeasuresByCountry.png" width="500"/>
+    <img src="IMG/MeasuresByCountry.png" width="500"/>
+    <br>
+    <em>**Measures by country**</em>
 </p>
 
 #### "Distribution of Policy Measures by Level"
+
+The chart presents how responsibilities were distributed across different levels.
+
 <p align="center">
-<img src="IMG/DistributionByLevel.png" width="500"/>
+    <img src="IMG/DistributionByLevel.png" width="500"/>
+    <br>
+    <em>**Distribution by level**</em>
 </p>
 
 #### "Authority Breakdown and Map"
+
+A geographic and hierarchical visualization showing which authorities enacted policies and in which regions.
+
 <p align="center">
-<img src="IMG/AuthorityBreakdownAndMap.png" width="500"/>
+    <img src="IMG/AuthorityBreakdownAndMap.png" width="500"/>
+    <br>
+    <em>**Map and authority breakdown**</em>
 </p>
 
 
