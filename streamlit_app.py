@@ -95,6 +95,7 @@ if results:
     df["date"] = pd.to_datetime(df["date"])
 
     if not df.empty:
+        #--------------------- diagram 1 - "Measures Over Time"
         with st.expander("Measures Over Time"):
             aggregation_option = st.selectbox("Select aggregation interval:", ["Weekly", "Monthly", "Daily"], index=0)
             if aggregation_option == "Daily":
@@ -116,6 +117,8 @@ if results:
             fig1.update_layout(margin=dict(l=40, r=40, t=40, b=40))
             st.plotly_chart(fig1, use_container_width=True)
 
+        
+        #--------------------- diagram 2 - "Measures by Country"
         with st.expander("Measures by Country"):
             country_counts = df["country"].value_counts().reset_index()
             country_counts.columns = ["country", "measure_count"]
@@ -135,6 +138,7 @@ if results:
             fig2.update_layout(yaxis=dict(autorange="reversed"), margin=dict(l=100, r=40, t=40, b=40))
             st.plotly_chart(fig2, use_container_width=True)
 
+        #--------------------- diagram 3 - "Distribution of Policy Measures by Level"
         with st.expander("Distribution of Policy Measures by Level"):
             level_data = []
             for m in measures:
@@ -169,6 +173,7 @@ if results:
             else:
                 st.info("No policy level data available to display.")
 
+        #--------------------- diagram 4 - "Authority Breakdown and Map"        
         with st.expander("Authority Breakdown and Map"):
             authority_counts = df["authority"].value_counts().reset_index()
             authority_counts.columns = ["authority", "count"]
