@@ -29,10 +29,11 @@
     - [Step 4:](#step-4)
     - [Step 5:](#step-5)
 ---
+<br />
 ## Concept of a project
 
 The project aims to develop a system that collects, stores, and visualizes data related to financial sector policy responses to COVID-19. The process includes importing data from an online dataset into a custom-built relational database and implementing a visualization layer to allow users to interactively analyze the information. 
-
+<br />
 ## Dataset
 
 **COVID-19 Finance Sector Related Policy Responses** - Bojan Tunguz
@@ -42,7 +43,7 @@ Click [here](https://www.kaggle.com/datasets/tunguz/covid19-finance-sector-relat
 This dataset provides a structured record of global policy responses in the financial sector during the COVID-19 pandemic, maintained by the IMF. It includes dimensions such as country, date, policy type, and description, making it suitable for time-based, statistical, and geographical analysis.
 
 Policies are classified according five main categories: banking sector, financial markets and institutions, insolvency, liquidity/funding, and payments systems (Level 1 policy). Each category has different sub-categories (Level 2 policy measures) and a further more granular classification (Level 3 policy measures).
-
+<br />
 **Level 1 and 2 policy measures:**
    - Banking sector Crisis management
    - Integrity
@@ -63,14 +64,20 @@ Policies are classified according five main categories: banking sector, financia
    - Easing regulatory requirements
    - Promoting and ensuring avail. of dig. paym. mechan.
    - Other Payments
-
+<br />
 
 ## Data structure
-(here should be added a graph, ie. from https://dbdiagram.io/)
+<br />
+<p align="center">
+    <img src="IMG/DataStructure.png" width="500"/>
+    <br>
+    <em>Data structure diagram</em>
+</p>
+<br />
 
 ## Architecture of a system
 What technologies were used, what is flow of data
-
+<br />
 
 ## Features of a system
 
@@ -88,9 +95,6 @@ Users are able to filter data using criteria, such as:
     <em>Filter Options</em>
 </p>
 <br />
-<br />
-
-
 
 **The following images illustrate sample outputs of the system based on the following selected criteria:**
 
@@ -100,7 +104,6 @@ Users are able to filter data using criteria, such as:
  - **Level:** Level 1, Level 2
  - **Time Range:** 2020/01/01 - 2025/02/13
 
-<br />
 <br />
 
 ### Filtering
@@ -114,8 +117,6 @@ The system allows users to filter the data based on multiple criteria. Users can
     <em>Measure filter</em>
 </p>
 <br />
-<br />
-
 
 ### Diagrams:
 
@@ -130,8 +131,6 @@ This diagram visualizes the implementation of policy measures over a timeline, a
     <em>Measures over time</em>
 </p>
 <br />
-<br />
-
 
 #### "Measures by Country"
 
@@ -144,8 +143,6 @@ This view helps identify how different countries approached the crisis, comparin
     <em>Measures by country</em>
 </p>
 <br />
-<br />
-
 
 #### "Distribution of Policy Measures by Level"
 
@@ -158,8 +155,6 @@ The chart presents how responsibilities were distributed across different levels
     <em>Distribution by level</em>
 </p>
 <br />
-<br />
-
 
 #### "Authority Breakdown and Map"
 
@@ -172,35 +167,43 @@ A geographic and hierarchical visualization showing which authorities enacted po
     <em>Map and authority breakdown</em>
 </p>
 <br />
-<br />
-
 
 ## How to use:
 
-### Step 1: 
-    **Install Postgresql:**
-     - sudo apt update
-     - sudo apt install postgresql postgresql-contrib
-     - sudo -u postgres psql
-     - \password postgres
-     - \q to exit pqsl
-
+### Step 1:
+**Install Postgresql:**
+   ```bash
+    sudo apt update
+    sudo apt install postgresql postgresql-contrib
+    sudo -u postgres psql
+    \password postgres
+   ```
+to exit psql
+   ```bash
+   \q
+   ```
 ### Step 2:
-    **Setup python modules, in the project directory run commands:**
-     - python3 -m venv .venv
-     - source .venv/bin/activate
-     - pip install -r requirements.txt
-
+**Setup python modules, in the project directory run commands:**
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   ```
 ### Step 3:
-    **Setup credentials**
-    Create .env file and fill in the fields (check .env.example).
-    If you have a default instance of postgres you can copy the contents of .env.example
+**Setup credentials**
+    Create `.env` file and fill in the fields (check `.env.example`).
+    If you have a default instance of postgres you can copy the contents of `.env.example`
 
 ### Step 4:
-    **Setup database**
-    run: python setup_database.py
-    It will create the necessary tables and insert data.
+**Setup database**
+   ```bash
+   python setup_database.py
+   ```
+It will create the necessary tables and insert data.
 
 ### Step 5:
-    **Start the app**
-    run: streamlit run streamlit_app.py
+**Start the app**
+   ```bash
+   streamlit run streamlit_app.pyt
+   ```
+    
