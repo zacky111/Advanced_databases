@@ -39,10 +39,12 @@ The project aims to develop a system that collects, stores, and visualizes data 
 **COVID-19 Finance Sector Related Policy Responses** - Bojan Tunguz
 
 Click [here](https://www.kaggle.com/datasets/tunguz/covid19-finance-sector-related-policy-responses/data) to view the dataset on Kaggle.
+<br />
 
 This dataset provides a structured record of global policy responses in the financial sector during the COVID-19 pandemic, maintained by the IMF. It includes dimensions such as country, date, policy type, and description, making it suitable for time-based, statistical, and geographical analysis.
 
 Policies are classified according five main categories: banking sector, financial markets and institutions, insolvency, liquidity/funding, and payments systems (Level 1 policy). Each category has different sub-categories (Level 2 policy measures) and a further more granular classification (Level 3 policy measures).
+<br />
 <br />
 
 **Level 1 and 2 policy measures:**
@@ -82,8 +84,24 @@ Policies are classified according five main categories: banking sector, financia
 - **Database**: PostgreSQL
 - **Frontend**: Streamlit
 - **Backend**: SQLAlchemy
-What technologies were used, what is flow of data
-<br />
+
+
+Data flow:
+```mermaid
+graph LR
+    Dataset["Dataset (Kaggle)"]
+    ETL["ETL / Import danych (Python script)"]
+    Database["Relacyjna baza danych (PostgreSQL)"]
+    Backend["Backend (Python + SQLAlchemy)"]
+    Frontend["Frontend (Streamlit)"]
+    User["Użytkownik"]
+
+    Dataset --> ETL["pobieranie/import danych"]
+    ETL --> Database["zapis do bazy danych"]
+    Database --> Backend["zapytania i pobieranie danych"]
+    Backend --> Frontend["przygotowanie danych do wizualizacji"]
+    Frontend --> User["interfejs użytkownika"]
+    User --> Frontend["wybór filtrów i zapytań"]
 
 ## Features of a system
 
