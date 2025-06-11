@@ -88,7 +88,7 @@ Policies are classified according five main categories: banking sector, financia
 
 Data flow:
 ```mermaid
-graph DF
+graph LR
     Dataset["Dataset (Kaggle)"]
     ETL["ETL / Import danych (Python script)"]
     Database["Relacyjna baza danych (PostgreSQL)"]
