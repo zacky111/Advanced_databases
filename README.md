@@ -5,7 +5,7 @@
  - Janusz Chmiel
  - Kacper Błachowiak
 
-  **Advanced Databases** - group 1. - Friday 11:30
+  **Advanced Databases** - group 1.  Friday 11:30
 
 ----
 ## Table of contents
@@ -29,7 +29,7 @@
     - [Step 4:](#step-4)
     - [Step 5:](#step-5)
 ---
-<br />
+
 ## Concept of a project
 
 The project aims to develop a system that collects, stores, and visualizes data related to financial sector policy responses to COVID-19. The process includes importing data from an online dataset into a custom-built relational database and implementing a visualization layer to allow users to interactively analyze the information. 
@@ -44,6 +44,7 @@ This dataset provides a structured record of global policy responses in the fina
 
 Policies are classified according five main categories: banking sector, financial markets and institutions, insolvency, liquidity/funding, and payments systems (Level 1 policy). Each category has different sub-categories (Level 2 policy measures) and a further more granular classification (Level 3 policy measures).
 <br />
+
 **Level 1 and 2 policy measures:**
    - Banking sector Crisis management
    - Integrity
@@ -69,24 +70,29 @@ Policies are classified according five main categories: banking sector, financia
 ## Data structure
 <br />
 <p align="center">
-    <img src="IMG/DataStructure.png" width="500"/>
+    <img src="IMG/DataStructure.png" width="700"/>
     <br>
     <em>Data structure diagram</em>
 </p>
 <br />
 
 ## Architecture of a system
+
+### Technologies used
+- **Database**: PostgreSQL
+- **Frontend**: Streamlit
+- **Backend**: SQLAlchemy
 What technologies were used, what is flow of data
 <br />
 
 ## Features of a system
 
-Users are able to filter data using criteria, such as: 
+Users are able to filter data using criteria, such as:
  - Countries
  - Policy Type
  - Target Group
  - Level
- - Time Range 
+ - Time Range
 
 <br />
 <p align="center">
@@ -178,10 +184,8 @@ A geographic and hierarchical visualization showing which authorities enacted po
     sudo -u postgres psql
     \password postgres
    ```
-to exit psql
-   ```bash
-   \q
-   ```
+to exit psql type `\q`
+
 ### Step 2:
 **Setup python modules, in the project directory run commands:**
    ```bash
@@ -206,4 +210,3 @@ It will create the necessary tables and insert data.
    ```bash
    streamlit run streamlit_app.pyt
    ```
-    
