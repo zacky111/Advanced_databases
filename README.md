@@ -88,7 +88,7 @@ Policies are classified according five main categories: banking sector, financia
 
 Data flow:
 ```mermaid
-graph LR
+graph DF
     Dataset["Dataset (Kaggle)"]
     ETL["ETL / Import danych (Python script)"]
     Database["Relacyjna baza danych (PostgreSQL)"]
@@ -96,12 +96,12 @@ graph LR
     Frontend["Frontend (Streamlit)"]
     User["Użytkownik"]
 
-    Dataset --> ETL["pobieranie/import danych"]
-    ETL --> Database["zapis do bazy danych"]
-    Database --> Backend["zapytania i pobieranie danych"]
-    Backend --> Frontend["przygotowanie danych do wizualizacji"]
-    Frontend --> User["interfejs użytkownika"]
-    User --> Frontend["wybór filtrów i zapytań"]
+    Dataset -- "pobieranie/import" --> ETL
+    ETL -- "zapis do bazy" --> Database
+    Database -- "zapytania" --> Backend
+    Backend -- "przygotowanie danych" --> Frontend
+    Frontend -- "interfejs" --> User
+    User -- "filtry i zapytania" --> Frontend
 ```
 <br />
 <br />
