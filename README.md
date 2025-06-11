@@ -74,22 +74,25 @@ What technologies were used, what is flow of data
 
 ## Features of a system
 
-Users are able to filter data using at criteria, such as: 
+Users are able to filter data using criteria, such as: 
  - Countries
  - Policy Type
  - Target Group
  - Level
  - Time Range 
 
-
+<br />
 <p align="center">
     <img src="IMG/FilterOptions.png" width="250"/>
     <br>
     <em>Filter Options</em>
 </p>
+<br />
+<br />
 
 
-The following images illustrate sample outputs of the system based on the following selected criteria:
+
+**The following images illustrate sample outputs of the system based on the following selected criteria:**
 
  - **Countries:** Poland, Italy
  - **Policy Type:** Banking Sector
@@ -97,59 +100,79 @@ The following images illustrate sample outputs of the system based on the follow
  - **Level:** Level 1, Level 2
  - **Time Range:** 2020/01/01 - 2025/02/13
 
+<br />
+<br />
 
 ### Filtering
 
 The system allows users to filter the data based on multiple criteria. Users can select multiple options simultaneously from each category, enabling precise customization and comparison across different data segments.
 
+<br />
 <p align="center">
     <img src="IMG/MeasureFilter.png" width="800"/>
     <br>
     <em>Measure filter</em>
 </p>
+<br />
+<br />
 
 
 ### Diagrams:
 
 #### "Measures Over Time"
 
-This diagram visualizes the implementation of policy measures over a timeline, allowing users to track how responses evolved throughout the pandemic.
+This diagram visualizes the implementation of policy measures over a timeline, allowing users to track how responses evolved throughout chosen time period.
 
+<br />
 <p align="center">
     <img src="IMG/MeasuresOverTime.png" width="500"/>
     <br>
-    <em>**Measures over time**</em>
+    <em>Measures over time</em>
 </p>
+<br />
+<br />
+
 
 #### "Measures by Country"
 
-This view helps identify how different countries approached the crisis, comparing the number of actions taken during chosen time period.
+This view helps identify how different countries approached the crisis, comparing the number of actions taken.
 
+<br />
 <p align="center">
     <img src="IMG/MeasuresByCountry.png" width="500"/>
     <br>
-    <em>**Measures by country**</em>
+    <em>Measures by country</em>
 </p>
+<br />
+<br />
+
 
 #### "Distribution of Policy Measures by Level"
 
 The chart presents how responsibilities were distributed across different levels.
 
+<br />
 <p align="center">
     <img src="IMG/DistributionByLevel.png" width="500"/>
     <br>
-    <em>**Distribution by level**</em>
+    <em>Distribution by level</em>
 </p>
+<br />
+<br />
+
 
 #### "Authority Breakdown and Map"
 
 A geographic and hierarchical visualization showing which authorities enacted policies and in which regions.
 
+<br />
 <p align="center">
     <img src="IMG/AuthorityBreakdownAndMap.png" width="500"/>
     <br>
-    <em>**Map and authority breakdown**</em>
+    <em>Map and authority breakdown</em>
 </p>
+<br />
+<br />
 
 
 ## How to use:
