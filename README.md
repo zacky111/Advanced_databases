@@ -75,31 +75,37 @@ What technologies were used, what is flow of data
 ## Features of a system
 ///
 ### Filtering
+<p align="center">
+<img src="IMG/FilterOptions.png" width="300"/>
+</p>
 
-<img src="IMG/FilterOptions.png" width="128"/>
-
-<img src="IMG/MeasureFilter.png" width="128"/>
-
+<p align="center">
+<img src="IMG/MeasureFilter.png" width="500"/>
+</p>
 
 screen + description + fact of ability to choose multiple options from criteria
 
 ### Diagrams:
 
 #### "Measures Over Time"
-
-<img src="IMG/MeasuresOverTime.png" width="128"/>
+<p align="center">
+<img src="IMG/MeasuresOverTime.png" width="500"/>
+</p>
 
 #### "Measures by Country"
-
-<img src="IMG/MeasuresByCountry.png" width="128"/>
+<p align="center">
+<img src="IMG/MeasuresByCountry.png" width="500"/>
+</p>
 
 #### "Distribution of Policy Measures by Level"
-
-<img src="IMG/DistributionByLevel.png" width="128"/>
+<p align="center">
+<img src="IMG/DistributionByLevel.png" width="500"/>
+</p>
 
 #### "Authority Breakdown and Map"
-
-<img src="IMG/AuthorityBreakdownAndMap.png" width="128"/>
+<p align="center">
+<img src="IMG/AuthorityBreakdownAndMap.png" width="500"/>
+</p>
 
 
 ## How to use:
