@@ -42,26 +42,76 @@ Policies are classified according five main categories: banking sector, financia
 <br />
 <br />
 
-**Level 1 and 2 policy measures:**
-   - Banking sector Crisis management
-   - Integrity
-   - Operational continuity
-   - Prudential
-   - Support borrowers
-   - Financial Markets/NBFI Market functioning
-   - NBFI
-   - Public debt management
-   - Insolvency Amending bankruptcy filing obligations
-   - Enhancing tools for out-of-court debt restr. and workouts
-   - Other Insolvency
-   - Liquidity/funding Asset purchases
-   - Liquidity (incl FX)/ELA
-   - Policy rate
-   - Other Liquidity
-   - Payments systems Consumer protection
-   - Easing regulatory requirements
-   - Promoting and ensuring avail. of dig. paym. mechan.
-   - Other Payments
+**Level 1 policy measures:**
+ - Banking sector
+ - Financial markets/nbfi
+ - Insolvency
+ - Liquidity/funding
+ - Payment systems
+<br />
+
+**Level 2 policy measures:**
+ - Amending bankruptcy filing obligations
+ - Asset purchases
+ - Consumer protection measures and ensuring availability and acceptance of cash
+ - Crisis management
+ - Easing regulatory requirements
+ - Enhancing tools for out-of-court debt restructuring and workouts
+ - Integrity
+ - Liquidity (incl fx)/ela
+ - Market functioning
+ - Nbfi
+ - Operational continuity
+ - Other insolvency
+ - Other liquidity
+ - Other payments
+ - Policy rate
+ - Promoting and ensuring availability of digital payment mechanisms
+ - Prudential
+ - Public debt management
+ - Support borrowers
+<br />
+
+**Level 3 policy measures:**
+ - Adjusting funding strategy
+ - Caps on interest rates or fees
+ - Credit restructuring with public guarantee
+ - Ease credit exposure limits (large exposures, credit limits)
+ - Ease other macroprudential measures (eg, dti, ltv)
+ - Encourage restructuring of loans
+ - Ensure minimal functionality in the primary and secondary markets
+ - Ensure public risk disclosures by banks
+ - Flexibility in credit information requirements
+ - Insurance
+ - Lower risks weights for credit with public guarantees
+ - Mandatory credit repayment moratorium
+ - Market restrictions
+ - Other credit repayment moratorium
+ - Other crisis management
+ - Other integrity
+ - Other market functioning
+ - Other nbfi
+ - Other pdm
+ - Other prudential flexibility
+ - Other prudential relaxation
+ - Other support borrowers
+ - Pensions
+ - Prioritize or review critical supervisory actions
+ - Promoting digital channels in line with aml/cft requirements (via e-kyc, digital signature, and online document
+ - Reduce non-essential regulatory reporting requirements for banks
+ - Regulatory measures
+ - Relaxation in capital requirement (definition of capital, car, risk weights)
+ - Relaxation in npe treatment (definition, classification, provisioning)
+ - Release/defer capital buffers (conservation, counter-cyclical, systemic)
+ - Relief measures on customer identification (e.g. simplified cdd even in case of non-face-to-face relationships)
+ - Restrictions on use of profits and resources (e.g. dividends)
+ - State guarantees on loans
+ - State subsidies, direct loans and tax incentives to facilitate repayments
+ - Strengthen crisis management framework
+ - Supervisory guidance and expectations
+ - Suspension/limitation of banking fees
+ - Temporary ease on liquidity requirements
+ - Use of recovery and resolution tools
 <br />
 
 ## Data structure
@@ -84,19 +134,19 @@ Policies are classified according five main categories: banking sector, financia
 Data flow:
 ```mermaid
 graph LR
-    Dataset["Dataset (Kaggle)"]
-    ETL["ETL / Import danych (Python script)"]
-    Database["Relacyjna baza danych (PostgreSQL)"]
+    Dataset["Dataset (Kaggle/IMF)"]
+    ETL["ETL / Data Import (Python script)"]
+    Database["Relational Database (PostgreSQL)"]
     Backend["Backend (Python + SQLAlchemy)"]
     Frontend["Frontend (Streamlit)"]
-    User["Użytkownik"]
+    User["User"]
 
-    Dataset -- "pobieranie/import" --> ETL
-    ETL -- "zapis do bazy" --> Database
-    Database -- "zapytania" --> Backend
-    Backend -- "przygotowanie danych" --> Frontend
-    Frontend -- "interfejs" --> User
-    User -- "filtry i zapytania" --> Frontend
+    Dataset -- "download/import" --> ETL
+    ETL -- "store data" --> Database
+    Database -- "fetch/query" --> Backend
+    Backend -- "process & prepare" --> Frontend
+    Frontend -- "UI display" --> User
+    User -- "filters & inputs" --> Frontend
 ```
 <br />
 <br />
@@ -120,11 +170,11 @@ Users are able to filter data using criteria, such as:
 
 **The following images illustrate sample outputs of the system based on the following selected criteria:**
 
- - **Countries:** Poland, Italy
- - **Policy Type:** Banking Sector
- - **Target Group:** Banking Sector
+ - **Countries:** Poland, Italy, Germany, France Spain
+ - **Policy Type:** Banking Sector, Asset purchases, Insurance, Liquidity/funding, Regulatory measures
+ - **Target Group:** Banking Sector, Asset purchases, Marketing functioning, Payment systems
  - **Level:** Level 1, Level 2
- - **Time Range:** 2020/01/01 - 2025/02/13
+ - **Time Range:** 2020/01/01 - 2022/02/25
 
 <br />
 
@@ -224,5 +274,5 @@ It will create the necessary tables and insert data.
 ### Step 5:
 **Start the app**
    ```bash
-   streamlit run streamlit_app.pyt
+   streamlit run streamlit_app.py
    ```
