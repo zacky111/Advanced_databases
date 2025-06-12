@@ -38,7 +38,7 @@ Click [here](https://www.kaggle.com/datasets/tunguz/covid19-finance-sector-relat
 
 This dataset provides a structured record of global policy responses in the financial sector during the COVID-19 pandemic, maintained by the IMF. It includes dimensions such as country, date, policy type, and description, making it suitable for time-based, statistical, and geographical analysis.
 
-Policies are classified according five main categories: banking sector, financial markets and institutions, insolvency, liquidity/funding, and payments systems (Level 1 policy). Each category has different sub-categories (Level 2 policy measures) and a further more granular classification (Level 3 policy measures).
+Policies are classified according five main categories: banking sector, financial markets and institutions, insolvency, liquidity/funding, and payments systems (Level 1 policy measures). Each category has different sub-categories (Level 2 policy measures) and a further more granular classification (Level 3 policy measures).
 <br />
 <br />
 
