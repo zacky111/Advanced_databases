@@ -198,7 +198,7 @@ This diagram visualizes the implementation of policy measures over a timeline, a
 
 <br />
 <p align="center">
-    <img src="IMG/MeasuresOverTime.png" width="500"/>
+    <img src="IMG/MeasuresOverTime.png" width="800"/>
     <br>
     <em>Measures over time</em>
 </p>
@@ -210,7 +210,7 @@ This view helps identify how different countries approached the crisis, comparin
 
 <br />
 <p align="center">
-    <img src="IMG/MeasuresByCountry.png" width="500"/>
+    <img src="IMG/MeasuresByCountry.png" width="800"/>
     <br>
     <em>Measures by country</em>
 </p>
@@ -222,7 +222,7 @@ The chart presents how responsibilities were distributed across different levels
 
 <br />
 <p align="center">
-    <img src="IMG/DistributionByLevel.png" width="500"/>
+    <img src="IMG/DistributionByLevel.png" width="800"/>
     <br>
     <em>Distribution by level</em>
 </p>
@@ -234,7 +234,7 @@ A geographic and hierarchical visualization showing which authorities enacted po
 
 <br />
 <p align="center">
-    <img src="IMG/AuthorityBreakdownAndMap.png" width="500"/>
+    <img src="IMG/AuthorityBreakdownAndMap.png" width="800"/>
     <br>
     <em>Map and authority breakdown</em>
 </p>
