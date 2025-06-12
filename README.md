@@ -23,11 +23,6 @@
       - ["Distribution of Policy Measures by Level"](#distribution-of-policy-measures-by-level)
       - ["Authority Breakdown and Map"](#authority-breakdown-and-map)
   - [How to use](#how-to-use)
-    - [Step 1:](#step-1)
-    - [Step 2:](#step-2)
-    - [Step 3:](#step-3)
-    - [Step 4:](#step-4)
-    - [Step 5:](#step-5)
 ---
 
 ## Concept of a project
