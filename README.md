@@ -170,7 +170,7 @@ Users are able to filter data using criteria, such as:
 
 **The following images illustrate sample outputs of the system based on the following selected criteria:**
 
- - **Countries:** Poland, Italy, Germany, France Spain
+ - **Countries:** Poland, Italy, Germany, France, Spain
  - **Policy Type:** Banking Sector, Asset purchases, Insurance, Liquidity/funding, Regulatory measures
  - **Target Group:** Banking Sector, Asset purchases, Marketing functioning, Payment systems
  - **Level:** Level 1, Level 2
