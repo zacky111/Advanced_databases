@@ -5,6 +5,7 @@ from collections import Counter
 
 import pandas as pd
 import plotly.express as px
+from plotly import graph_objects as go
 
 from src.database.connection import engine
 from src.database.model import Country, PolicyMeasureLevel
@@ -95,7 +96,8 @@ if results:
     df["date"] = pd.to_datetime(df["date"])
 
     if not df.empty:
-        #--------------------- diagram 1 - "Measures Over Time"
+
+        ### ---------------- FOLD 1 ----------------------------------------
         with st.expander("Measures Over Time"):
             aggregation_option = st.selectbox("Select aggregation interval:", ["Weekly", "Monthly", "Daily"], index=0)
             if aggregation_option == "Daily":
@@ -117,8 +119,7 @@ if results:
             fig1.update_layout(margin=dict(l=40, r=40, t=40, b=40))
             st.plotly_chart(fig1, use_container_width=True)
 
-        
-        #--------------------- diagram 2 - "Measures by Country"
+        ### ---------------- FOLD 2 ----------------------------------------
         with st.expander("Measures by Country"):
             country_counts = df["country"].value_counts().reset_index()
             country_counts.columns = ["country", "measure_count"]
@@ -138,42 +139,70 @@ if results:
             fig2.update_layout(yaxis=dict(autorange="reversed"), margin=dict(l=100, r=40, t=40, b=40))
             st.plotly_chart(fig2, use_container_width=True)
 
-        #--------------------- diagram 3 - "Distribution of Policy Measures by Level"
+        ### ---------------- FOLD 3 ----------------------------------------
         with st.expander("Distribution of Policy Measures by Level"):
-            level_data = []
+            hierarchy_data = []
+
             for m in measures:
+                level_1_names = []
+                level_2_names = []
                 for pl in getattr(m, "policy_links", []):
-                    name = pl.policy.name
-                    level_type = pl.policy.level_type
-                    if name and level_type:
-                        level_data.append((name, level_type))
+                    if pl.policy.level_type.strip() == "Level 1":
+                        level_1_names.append(pl.policy.name.strip())
+                    elif pl.policy.level_type.strip() == "Level 2":
+                        level_2_names.append(pl.policy.name.strip())
 
-            if level_data:
-                df_levels = pd.DataFrame(level_data, columns=["policy", "level_type"])
+                for l1 in level_1_names:
+                    for l2 in level_2_names:
+                        hierarchy_data.append((l1, l2))
 
-                top_n_policies = st.slider("Number of top policy measures to display", 1, len(df_levels["policy"].unique()), min(10, len(df_levels["policy"].unique())))
-                top_policies = df_levels["policy"].value_counts().head(top_n_policies).index.tolist()
-                df_levels = df_levels[df_levels["policy"].isin(top_policies)]
+            if hierarchy_data:
+                df_hier = pd.DataFrame(hierarchy_data, columns=["level_1", "level_2"])
 
-                fig4 = px.histogram(
-                    df_levels,
-                    y="policy",
-                    color="level_type",
-                    barmode="stack",
-                    labels={"policy": "Policy Name", "level_type": "Policy Level"},
-                    title="Policy Measure Distribution by Level",
-                    orientation="h",
-                    height=30 + 20 * len(df_levels["policy"].unique())
+                level1_counts = df_hier["level_1"].value_counts().reset_index()
+                level1_counts.columns = ["level_1", "count"]
+
+                st.markdown("<h4 style='text-align:left; margin-top:0'>Distribution of Policy Measures by Level 1</h4>", unsafe_allow_html=True)
+
+                fig_main = px.pie(
+                    level1_counts,
+                    names="level_1",
+                    values="count",
+                    hole=0.4
                 )
-                fig4.update_layout(
-                    yaxis=dict(categoryorder="total ascending"),
-                    margin=dict(l=200, r=40, t=50, b=40)
-                )
-                st.plotly_chart(fig4, use_container_width=True)
+                fig_main.update_traces(textinfo="label+percent")
+                fig_main.update_layout(margin=dict(t=50, b=30))
+                st.plotly_chart(fig_main, use_container_width=True)
+
+                st.markdown("<h4 style='text-align:left; margin-top:2em'>Level 2 Breakdown by Level 1 Category</h4>", unsafe_allow_html=True)
+                cols = st.columns(len(level1_counts))
+
+                for i, l1_value in enumerate(level1_counts["level_1"]):
+                    with cols[i]:
+                        subset = df_hier[df_hier["level_1"] == l1_value]
+                        level2_counts = subset["level_2"].value_counts().reset_index()
+                        level2_counts.columns = ["level_2", "count"]
+
+                        st.markdown(f"<h5 style='text-align:center; margin-bottom:0.5em'>{l1_value}</h5>", unsafe_allow_html=True)
+
+                        fig_sub = px.pie(
+                            level2_counts,
+                            names="level_2",
+                            values="count",
+                            hole=0.3
+                        )
+                        fig_sub.update_traces(textinfo="percent")
+                        fig_sub.update_layout(
+                            height=300,
+                            showlegend=True,
+                            legend=dict(orientation="h", y=-0.25, x=0, font=dict(size=9)),
+                            margin=dict(t=0, b=60)
+                        )
+                        st.plotly_chart(fig_sub, use_container_width=True)
             else:
-                st.info("No policy level data available to display.")
+                st.info("No hierarchical Level 1 → Level 2 data available.")
 
-        #--------------------- diagram 4 - "Authority Breakdown and Map"        
+        ### ---------------- FOLD 4 ----------------------------------------
         with st.expander("Authority Breakdown and Map"):
             authority_counts = df["authority"].value_counts().reset_index()
             authority_counts.columns = ["authority", "count"]
@@ -195,6 +224,18 @@ if results:
             df_map = pd.DataFrame(rows)
 
             if not authority_counts.empty and not df_map.empty:
+                authority_labels = {
+                    "Cb": "Central Bank",
+                    "Sup": "Supervisor",
+                    "Gov": "Government",
+                    "Mof": "Ministry of Finance",
+                    "Res": "Resolution Authority",
+                    "Other": "Other"
+                }
+
+                authority_counts["label"] = authority_counts["authority"]
+                authority_counts["legend_name"] = authority_counts["authority"].map(lambda x: f"{x} – {authority_labels.get(x, 'Unknown')}")
+
                 authority_types = sorted(authority_counts["authority"].unique())
                 color_map = px.colors.qualitative.Plotly
                 color_scale = {auth: color_map[i % len(color_map)] for i, auth in enumerate(authority_types)}
@@ -203,21 +244,18 @@ if results:
 
                 with col1:
                     fig_map = px.choropleth(
-                    df_map,
-                    locations="iso3",
-                    color="authority",
-                    hover_name="iso3",
-                    title="Dominant Authority Type by Country",
-                    color_discrete_map=color_scale,
-                    category_orders={"authority": authority_types}
+                        df_map,
+                        locations="iso3",
+                        color="authority",
+                        hover_name="iso3",
+                        title="Dominant Authority Type by Country",
+                        color_discrete_map=color_scale,
+                        category_orders={"authority": authority_types}
                     )
-
-                    # Ustawienie właściwego tekstu w hoverze
                     fig_map.update_traces(
                         hovertemplate="<b>%{hovertext}</b><br>Authority Type: %{customdata[0]}<extra></extra>",
                         customdata=df_map[["authority"]]
                     )
-
                     fig_map.update_layout(
                         geo=dict(showframe=False, showcoastlines=False, projection_type="natural earth"),
                         showlegend=False,
@@ -227,19 +265,43 @@ if results:
                     st.plotly_chart(fig_map, use_container_width=True)
 
                 with col2:
-                    fig_pie = px.pie(
-                        authority_counts,
-                        names="authority",
-                        values="count",
-                        title="Authority Type Distribution",
-                        color="authority",
-                        color_discrete_map=color_scale,
-                        hole=0.4
+                    labels = authority_counts["label"]
+                    values = authority_counts["count"]
+                    authorities = authority_counts["authority"]
+                    legend_names = authority_counts["legend_name"]
+
+                    fig_pie = go.Figure(
+                        data=[
+                            go.Pie(
+                                labels=labels,
+                                values=values,
+                                hole=0.4,
+                                marker=dict(colors=[color_scale[a] for a in authorities]),
+                                hovertext=legend_names,
+                                hoverinfo="label+percent+text",
+                                textinfo="label+percent",
+                                textfont_size=12,
+                                pull=[0.03] * len(labels),
+                                showlegend=True
+                            )
+                        ]
                     )
-                    fig_pie.update_traces(textinfo="label+percent")
-                    fig_pie.update_layout(margin=dict(t=50, b=20))
+
+                    fig_pie.update_layout(
+                        margin=dict(t=50, b=100),
+                        legend_title_text="Authority Type",
+                        legend_traceorder="normal",
+                        legend=dict(
+                            y=0.5,
+                            font=dict(size=10),
+                            itemsizing="constant"
+                        ),
+                        title="Authority Type Distribution"
+                    )
+
                     st.plotly_chart(fig_pie, use_container_width=True)
             else:
                 st.info("No authority data available to display.")
 else:
     st.info("Set your filters and click 'Apply Filters' to see results.")
+    
